@@ -20,18 +20,23 @@ const page = () => {
   const [isPending, startTransition] = useTransition()
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
+  const [loading, setLoading] = useState(false);
 
 
   const onSubmit: SubmitHandler<schema> = (data) => {
     setError("");
     setSuccess("");
     startTransition(() => {
+      setLoading(true)
       registerAction(data)
         .then(val => {
           setError(val.error);
           setSuccess(val.success);
         })
+      setLoading(false)
+
     });
+
   }
 
   return (
@@ -60,6 +65,20 @@ const page = () => {
                   <span className="sr-only">Info</span>
                   <div>
                     <span className="font-medium">{errors.email.message}!</span>
+                  </div>
+                </div>
+              }
+
+            </div>
+            <div>
+              <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+              <input {...register("name")}
+                name="name" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Ravi Kumar" />
+              {errors.name &&
+                <div className="flex items-center text-sm text-red-800" role="alert">
+                  <span className="sr-only">Info</span>
+                  <div>
+                    <span className="font-medium">{errors.name.message}!</span>
                   </div>
                 </div>
               }
@@ -105,7 +124,12 @@ const page = () => {
             <FormSuccess msg={success} />
 
 
-            <button type="submit" className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Register</button>
+
+            <button disabled={isPending} type="submit" className="flex items-center justify-center w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 relative">
+              {isPending ?
+                <img className=" m-auto h-5 w-5" src="loading.gif" alt="Loading" />
+                : "Register"}
+            </button>
             <p className="text-sm font-light text-gray-500 dark:text-gray-400">
               Already have an account? <span onClick={() => { router.push('/login') }} className="cursor-pointer font-medium text-blue-600 hover:underline dark:text-blue-500">Log in</span>
             </p>

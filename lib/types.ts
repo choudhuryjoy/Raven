@@ -9,8 +9,11 @@ export const registerSchema = z.object({
     required_error: "Please select a user type.",
     invalid_type_error: "Please select a valid user type.",
   }),
+  name: z
+    .string()
+    .trim()
+    .min(3, { message: "Name must be greater than 3 chars" }),
 });
-
 
 export const loginSchema = z.object({
   email: z.string().email({ message: "Invalid email address" }),
