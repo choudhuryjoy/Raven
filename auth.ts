@@ -1,12 +1,13 @@
 import NextAuth from "next-auth";
-import { PrismaAdapter } from "@auth/prisma-adapter"
-import { PrismaClient } from "@prisma/client"
-import authConfig from "./auth.config"
+import { PrismaAdapter } from "@auth/prisma-adapter";
+import prisma from "./db";
+import authConfig from "./auth.config";
 
-const prisma = new PrismaClient()
- 
-export const { handlers, auth } = NextAuth({
+// TODO
+// extend user type and session type for token saved in local storage
+
+export const { handlers, auth, signIn } = NextAuth({
   adapter: PrismaAdapter(prisma),
   session: { strategy: "jwt" },
   ...authConfig,
-})
+});

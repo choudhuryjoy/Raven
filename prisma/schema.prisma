@@ -21,7 +21,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
-  userType      userType
+  userType      userType @default(user)
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 }

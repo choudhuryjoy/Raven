@@ -1,4 +1,3 @@
-  import { NextResponse } from "next/server";
   import authConfig from "./auth.config";
   import NextAuth from "next-auth";
   import { authRoute, REDIRECT_ROUTE, API_PREFIX_ROUTES } from "./lib/Route";
@@ -17,13 +16,13 @@
     }
     if (isAuthRoute) {
       if (isLoggedIn) {
-        return NextResponse.redirect(new URL(REDIRECT_ROUTE, req.url));
+        return Response.redirect(new URL(REDIRECT_ROUTE, req.url));
       }
       return;
     }
     if (isProtectedRoute && !isLoggedIn) {
       console.log("sorry babu");
-      return NextResponse.redirect(new URL("/login", req.url));
+      return Response.redirect(new URL("/login", req.url));
     }
   });
 

@@ -6,6 +6,7 @@ import prisma from "@/db";
 import bcryptjs from "bcryptjs";
 
 import { getUserByEmail } from "@/lib/dbHelper";
+import { loginAction } from "./login";
 
 export const registerAction = async (
   values: z.infer<typeof registerSchema>
@@ -34,6 +35,9 @@ export const registerAction = async (
       password: hash,
     },
   });
-  console.log(user);
+
+  // ADD logic to login
+  await loginAction(validateSchemas.data);
+
   return { success: "Email sent!" };
 };
