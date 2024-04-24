@@ -26,7 +26,6 @@ export default {
             return null;
           }
           const pwHash = bcryptjs.compareSync(password,user.password);
-          console.log(user);
           if(pwHash) return user;
         }
         return null;

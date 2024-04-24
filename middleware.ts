@@ -21,7 +21,6 @@
       return;
     }
     if (isProtectedRoute && !isLoggedIn) {
-      console.log("sorry babu");
       return Response.redirect(new URL("/login", req.url));
     }
   });

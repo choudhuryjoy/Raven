@@ -10,7 +10,6 @@ const page = async () => {
         return null;
     }
     const expires = session?.expires ? new Date(session.expires) : null;
-    console.log(session);
 
     const handleSignOut = async () => {
         await signOut();
@@ -42,6 +41,9 @@ const page = async () => {
                         </p>
                         <p>
                             <span className="font-bold">Email:</span> {session?.user?.email}
+                        </p>
+                        <p>
+                            <span className="font-bold">Role:</span> {session?.user?.userType}
                         </p>
                     </div>
                     <div className="text-sm text-center">
