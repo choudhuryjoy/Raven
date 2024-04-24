@@ -10,7 +10,6 @@ import FormError from "@/components/FormError";
 import FormSuccess from "@/components/FormSuccess";
 import { registerAction } from "@/actions/register";
 import { useState, useTransition } from "react";
-import { signIn } from "@/auth";
 import { signInGithHub } from "@/lib/signInWithGithub";
 import { signInGoogle } from "@/lib/signInWithGoogle";
 
@@ -33,7 +32,6 @@ const page = () => {
         .then(val => {
           setError(val?.error);
           setSuccess(val?.success);
-          // router.push('/');
         })
 
     });
