@@ -1,6 +1,6 @@
 "use client"
 
-import { signOutHelper } from "@/lib/SignOutHelper";
+import { signOutHelper } from "@/lib/signOutHelperFunction";
 
 const SignOutButton = () => {
     return (
