@@ -4,8 +4,10 @@ Raven is a comprehensive Next.js full-stack platform designed to streamline user
 
 Raven is deployed at [raven-seven.vercel.app](raven-seven.vercel.app). You can access the live version of the project to explore its features and functionalities
 
-## Data Flow
+## Problem
 
+Building full-stack web applications often requires implementing user authentication and authorization features, including login, signup, and user management functionalities. Setting up these features from scratch can be time-consuming and repetitive, especially when developing multiple projects.This project aims to provide a reusable and customizable template for quickly kickstarting the development of full-stack applications with pre-built authentication and authorization logic.
+## Data Flow
 ![App Screenshot](https://github.com/choudhuryjoy/raven/assets/160034854/c50e11d8-7e38-4fee-a50c-1ef3ab5c0790)
 
 ## Features
@@ -67,9 +69,6 @@ npm run dev
 
 5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the app.
 
-## Contributing
-
-Contributions are welcome! Please follow the guidelines in the [CONTRIBUTING.md](CONTRIBUTING.md) file.
 
 ## License
 
